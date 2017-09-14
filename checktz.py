@@ -14,6 +14,10 @@ LOS = ["BluePsychoRanger"]
 EST = ["Rai-Eclipse13", "GuineaNumber2", "GuineaPvP", "Landmine752"]
 JER = ["Simple Rick"]
 MAD = ["TheRahn"]
+AUS = ["Coppertine"]
+DEN = ["Willtalkzaboutstuff"]
+JAK = ["APG323"]
+MIC = ["cashwarrior1"]
 
 async def GetTime(username):
     username = username[:-5]
@@ -33,6 +37,13 @@ async def GetTime(username):
         return getTime.GetTime("Asia/Jerusalem")
     elif username in MAD:
         return getTime.GetTime("Europe/Madrid")
-        
+    elif username in AUS:
+        return getTime.GetTime("Australia/Brisbane")
+    elif username in DEN:
+        return getTime.GetTime("America/Denver")
+    elif username in JAK:
+        return getTime.GetTime("Asia/Jakarta")
+    elif username in MIC:
+        return getTime.GetTime("US/Michigan")   
     else:
         return "??:??"
