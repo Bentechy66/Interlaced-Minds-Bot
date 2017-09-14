@@ -51,11 +51,14 @@ async def CheckOnlineUsers():
         for person in blacklist: #blacklist
             online.remove(person)
         
+        online = sorted(online)
+        
         for user in online: #For each user in online list
             time = await checktz.GetTime(user)
             server = bot.get_server("297674982773882892")
             member = server.get_member_named(str(user))
             embed.add_field(name=str(user), value=time + "\n" + str(member.top_role)) #add them to the embed
+        
         
         
         if message == "none":
@@ -64,4 +67,4 @@ async def CheckOnlineUsers():
         else:
             message = await bot.edit_message(message, embed=embed) #edit the message on next runs
 
-        await asyncio.sleep(3) #wait 2 seconds before running again
+        await asyncio.sleep(3) #wait 3 seconds before running again
