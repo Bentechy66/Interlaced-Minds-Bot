@@ -64,4 +64,4 @@ async def CheckOnlineUsers():
         else:
             message = await bot.edit_message(message, embed=embed) #edit the message on next runs
 
-        await asyncio.sleep(2) #wait 2 seconds before running again
+        await asyncio.sleep(3) #wait 2 seconds before running again
