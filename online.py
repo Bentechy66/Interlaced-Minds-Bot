@@ -3,6 +3,7 @@ import asyncio
 from discord.ext import commands
 import botobject
 import checktz
+import points
 
 bot = botobject.bot
 
@@ -49,7 +50,12 @@ async def CheckOnlineUsers():
                 online.append(str(member)) #Add username to online list
                 
         for person in blacklist: #blacklist
-            online.remove(person)
+            try:
+                online.remove(person)
+            except:
+                dumb = "python"
+            
+            
         
         online = sorted(online)
         
@@ -57,7 +63,7 @@ async def CheckOnlineUsers():
             time = await checktz.GetTime(user)
             server = bot.get_server("297674982773882892")
             member = server.get_member_named(str(user))
-            embed.add_field(name=str(user), value=time + "\n" + str(member.top_role)) #add them to the embed
+            embed.add_field(name=str(user), value=time + "\n" + str(member.top_role) + "\n" + str(points.GetPoints(user))) #add them to the embed
         
         
         

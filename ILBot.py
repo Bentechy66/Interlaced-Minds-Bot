@@ -7,6 +7,7 @@ from discord.ext import commands #Used to define commands and some other things
 import credentials #The Bot's Secret Key
 import online #The CheckOnlineUsers function
 import botobject #The global bot object
+import points #The points system
 
 
 
@@ -16,14 +17,32 @@ bot = botobject.bot #import the bot object
 
 bot.loop.create_task(online.CheckOnlineUsers()) #create coroutine
 
-@bot.command()
-async def debug():
+@bot.command(pass_context=True)
+async def setpoints(ctx, mention, pointsv):
+    try:
+        name = str(ctx.message.mentions[0])
+    except:
+        await bot.say("something screwed up, check your formatting")
+        return
+    print("setting points to " + pointsv + " for " + name)
+    
+    if "drop" in ctx.message.content.lower():
+        await bot.say("really? **REALLY?**")
+        return
+        
     roles = []
-    rolesname = []
-    roles = bot.get_server("297674982773882892").role_hierarchy
-    for role in roles:
-        rolesname.append(role.name)
-    rolesname.remove("@everyone")
-    await bot.say(rolesname)
+    for role in ctx.message.author.roles:
+        roles.append(role.name)
+        
+        
+    if "PointMaster" in roles:
+        errorlevel = points.SetPoints(name, pointsv)
+        await bot.add_reaction(ctx.message, "tick:326377249223999498")
+    else:
+        await bot.say("nope")
+    
+    
+    
 
+    
 bot.run(credentials.BotSecret) #run bot
