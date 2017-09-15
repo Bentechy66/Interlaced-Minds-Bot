@@ -57,6 +57,29 @@ def SetPoints(name, points):
     conn.close()
     return "Complete"
     #return(data)
+
+    
+def AddPoints(name, points):
+    sqlite_file = 'Database.db'
+    conn = sqlite3.connect(sqlite_file)
+    c = conn.cursor()
+    
+    #c.execute("REPLACE INTO pointTable (name, points) VALUES (?, points + ?)", (name, points))
+    
+    name = name[:-5]
+    c.execute('UPDATE pointTable SET points = points + ? WHERE name = ?;', (points, name)) #get points
+    #data = c.fetchall() #get the query
+    
+    #print(list(data)[0]) #print that
+
+    #c.execute("CREATE TABLE points (key INTEGER PRIMARY KEY, name TEXT UNIQUE, points INTEGER);")
+
+    conn.commit()
+    conn.close()
+    return "Complete"
+    #return(data)
+    
+    
     
 def GetPoints(name):
     name = str(name)
