@@ -63,7 +63,7 @@ async def CheckOnlineUsers():
             time = await checktz.GetTime(user)
             server = bot.get_server("297674982773882892")
             member = server.get_member_named(str(user))
-            embed.add_field(name=str(user), value=time + "\n" + str(member.top_role) + "\n" + str(points.GetPoints(user)[0])) #add them to the embed
+            embed.add_field(name=str(user), value=time + "\n" + str(member.top_role) + "\nPoints: " + str(points.GetPoints(user)[0])) #add them to the embed
         
         
         
