@@ -43,6 +43,8 @@ async def setpoints(ctx, mention, pointsv):
         await bot.add_reaction(ctx.message, "tick:326377249223999498")
     else:
         await bot.add_reaction(ctx.message, "nope:326377249274068992")
+    await asyncio.sleep(3)
+    await bot.delete_message(ctx.message)
 
         
 #setting points
@@ -69,7 +71,8 @@ async def addpoints(ctx, mention, pointsv):
         await bot.add_reaction(ctx.message, "tick:326377249223999498")
     else:
         await bot.add_reaction(ctx.message, "nope:326377249274068992")
-    
+    await asyncio.sleep(3)
+    await bot.delete_message(ctx.message)
     
     
 
