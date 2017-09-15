@@ -8,6 +8,7 @@ Points system for each user with !addpoints (You need the "Give Points" role fir
 # TODO
 maybe add a >credits command
 
+organise points commands
 
 # Credits
 Ben
