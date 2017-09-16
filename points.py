@@ -34,6 +34,7 @@ async def setpoints(ctx, mention, pointsv):
     if "PointMaster" in roles:
         errorlevel = SetPoints(name, pointsv)
         await bot.add_reaction(ctx.message, "tick:326377249223999498")
+        Log(pointsv, name, ctx.message.author.name, " set points to ")
     else:
         await bot.add_reaction(ctx.message, "nope:326377249274068992")
     await asyncio.sleep(3)
@@ -63,7 +64,7 @@ async def addpoints(ctx, mention, pointsv):
         errorlevel = AddPoints(name, pointsv)
         await bot.add_reaction(ctx.message, "tick:326377249223999498")
         #await bot.send_message(ctx.message.channel, embed=errorlevel)
-        Log(ctx)
+        Log(pointsv, name, ctx.message.author.name, " added ")
     else:
         await bot.add_reaction(ctx.message, "nope:326377249274068992")
     await asyncio.sleep(3)
@@ -162,5 +163,10 @@ def Embed(name, points):
     #await bot.send_message(message.channel, embed=embed)
     return embed
     
-def Log(ctx):
-    print(str(ctx.message.author.name) + ": '" + ctx.message.content + "' at " + str(datetime.datetime.utcnow()) + " UTC")
+def Log(name, pointsv, author, soa):
+    file = open('Logs.txt', 'a') 
+ 
+    file.write(author + ": " + soa + name + " for " + pointsv + "\n")
+ 
+    file.close() 
+    #print(str(ctx.message.author.name) + ": '" + ctx.message.content + "' at " + str(datetime.datetime.utcnow()) + " UTC")
