@@ -18,6 +18,7 @@ AUS = ["Coppertine"]
 DEN = ["Willtalkzaboutstuff"]
 JAK = ["APG323"]
 MIC = ["cashwarrior1"]
+AMS = ["Gnimacz"]
 
 async def GetTime(username):
     username = username[:-5]
@@ -44,6 +45,9 @@ async def GetTime(username):
     elif username in JAK:
         return getTime.GetTime("Asia/Jakarta")
     elif username in MIC:
-        return getTime.GetTime("US/Michigan")   
+        return getTime.GetTime("US/Michigan")  
+    elif username in AMS:
+        return getTime.GetTime("Europe/Amsterdam")
+        
     else:
         return "??:??"

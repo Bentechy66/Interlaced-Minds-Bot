@@ -8,6 +8,8 @@ import credentials
 
 bot = botobject.bot
 
+#defining commands
+
 
 
 def CreateTable():
