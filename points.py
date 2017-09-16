@@ -5,6 +5,8 @@ from discord.ext import commands
 import sqlite3
 import botobject
 import credentials
+import datetime
+
 
 bot = botobject.bot
 
@@ -60,6 +62,8 @@ async def addpoints(ctx, mention, pointsv):
     if "PointMaster" in roles:
         errorlevel = AddPoints(name, pointsv)
         await bot.add_reaction(ctx.message, "tick:326377249223999498")
+        #await bot.send_message(ctx.message.channel, embed=errorlevel)
+        Log(ctx)
     else:
         await bot.add_reaction(ctx.message, "nope:326377249274068992")
     await asyncio.sleep(3)
@@ -112,7 +116,9 @@ def SetPoints(name, points):
 
     conn.commit()
     conn.close()
+    
     return "Complete"
+    Embed(name, points)
     #return(data)
 
     
@@ -133,7 +139,8 @@ def AddPoints(name, points):
 
     conn.commit()
     conn.close()
-    return "Complete"
+    return Embed(name, points)
+    
     #return(data)
     
     
@@ -147,5 +154,13 @@ def GetPoints(name):
     c.execute("SELECT points FROM pointTable WHERE name = ?", [name])
     return c.fetchone()
     
+def Embed(name, points):
+    embed = discord.Embed(color=0xf7ea31)
+    embed.set_author(name="Points Awarded!", icon_url="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/star-256.png")    
+    embed.add_field(name="How Many?", value=points)
+    embed.add_field(name="Who to?", value=name)
+    #await bot.send_message(message.channel, embed=embed)
+    return embed
     
-    
+def Log(ctx):
+    print(str(ctx.message.author.name) + ": '" + ctx.message.content + "' at " + str(datetime.datetime.utcnow()) + " UTC")
