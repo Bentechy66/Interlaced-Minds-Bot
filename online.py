@@ -4,8 +4,11 @@ from discord.ext import commands
 import botobject
 import checktz
 import points
+import random
 
 bot = botobject.bot
+global updateTime
+updateTime = "Bot just started!"
 
 def is_me(m):
     return m.author == bot.user
@@ -63,7 +66,12 @@ async def CheckOnlineUsers():
             time = await checktz.GetTime(user)
             server = bot.get_server("297674982773882892")
             member = server.get_member_named(str(user))
-            embed.add_field(name=str(user), value=time + "\n" + str(member.top_role) + "\nPoints: " + str(points.GetPoints(user)[0])) #add them to the embed
+            try:
+                embed.add_field(name=str(user), value=time + "\n" + str(member.top_role) + "\nPoints: " + str(points.GetPoints(user)[0])) #add them to the embed
+                global updateTime
+                updateTime = await checktz.GetTime("GMT")
+            except:
+                embed.add_field(name=str(user), value="error")
         
         
         
@@ -71,6 +79,9 @@ async def CheckOnlineUsers():
             message = await bot.send_message(bot.get_channel(chid), embed=embed) #send the message on first run
             
         else:
-            message = await bot.edit_message(message, embed=embed) #edit the message on next runs
+            try:
+                message = await bot.edit_message(message, embed=embed) #edit the message on next runs
+            except:
+                await asyncio.sleep(25)
 
-        await asyncio.sleep(3) #wait 3 seconds before running again
+        await asyncio.sleep(random.randint(3,40)) #wait between 3 and 20 seconds before running again

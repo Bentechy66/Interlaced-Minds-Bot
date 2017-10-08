@@ -12,9 +12,28 @@ bot = botobject.bot
 
 #defining commands
 
+#Add records
+@bot.command(pass_context=True)
+async def AddR(ctx):
+    """[DEBUG COMMAND] Used to add records to the Bot's SQL when new members join"""
+    
+    if discord.utils.get(ctx.message.author.roles, name='Moderator'):
+        counts = await AddRecords()
+        await bot.add_reaction(ctx.message, "tick:326377249223999498")
+        bad = counts.split(":")[0]
+        good = counts.split(":")[1]
+        await bot.say("Successes: " + str(good) + "\nFailed (Duplicate or error): " + str(bad))
+    else:
+        await bot.add_reaction(ctx.message, "nope:326377249274068992")
+        await asyncio.sleep(3)
+        await bot.delete_message(ctx.message)
+
+
+
 #setting points
 @bot.command(pass_context=True)
 async def setpoints(ctx, mention, pointsv):
+    """Sets a user's points to a value (The pointmaster role is required)"""
     try:
         name = str(ctx.message.mentions[0])
     except:
@@ -44,6 +63,7 @@ async def setpoints(ctx, mention, pointsv):
 #setting points
 @bot.command(pass_context=True)
 async def addpoints(ctx, mention, pointsv):
+    """Adds a number of points to a user's value (The pointmaster role is required)"""
     try:
         name = str(ctx.message.mentions[0])
     except:
@@ -85,17 +105,26 @@ async def AddRecords():
     c = conn.cursor()
     names = list(bot.get_all_members()) #Get list of members
     names = list(set(names))
+    failed = 0
+    added = 0
+    
     
     #return names
     
     for person in names:
         person = str(person.name)
         
-        c.execute("INSERT INTO pointTable (name, points) VALUES (?, 0)", [person])
+        try:
+            c.execute("INSERT INTO pointTable (name, points) VALUES (?, 0)", [person])
+            added = added + 1
+        except:
+            print("Duplicate or error")
+            failed = failed + 1
+        
     conn.commit()
     conn.close()
     
-    return "Complete"
+    return str(failed) + ":" + str(added)
         
 
 

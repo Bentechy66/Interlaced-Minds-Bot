@@ -16,7 +16,6 @@ JER = ["Kylee"]
 MAD = ["TheRahn"]
 AUS = ["Coppertine"]
 DEN = ["Willtalkzaboutstuff"]
-NYC = ["FP | Vetral 32"]
 JAK = ["APG323"]
 MIC = ["cashwarrior1"]
 AMS = ["Gnimacz"]
@@ -43,8 +42,6 @@ async def GetTime(username):
         return getTime.GetTime("Australia/Brisbane")
     elif username in DEN:
         return getTime.GetTime("America/Denver")
-    elif username in NYC:
-        return getTime.GetTime("America/New_York")
     elif username in JAK:
         return getTime.GetTime("Asia/Jakarta")
     elif username in MIC:
