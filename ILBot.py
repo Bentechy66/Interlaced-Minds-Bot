@@ -22,6 +22,7 @@ bot.loop.create_task(online.CheckOnlineUsers()) #create coroutine
 
 @bot.command()
 async def about():
+<<<<<<< HEAD
     """About and credits"""
     msgc = await bot.say("**ABOUT / Credits**\nThis bot shows local time in specific timezones and also handles points.\nWritten by BenTechy66 on Discord.\n\n**Credits**\nBen - *wrote the bot*\nMcTrees - *hosting the bot*\nOpen Source Libraries:Discord.py, asyncio, pytz.")
     #await bot.add_reaction(msgc, "tick:326377249223999498")
@@ -34,6 +35,13 @@ async def debug(ctx):
         os.execl(python, python, * sys.argv)
     if "-s" in ctx.message.content:
         await bot.say("If you are receiving this message, then the bot is online.\nLast online update: " + str(online.updateTime) + "GMT")
+=======
+    msgc = await bot.say("**ABOUT / Credits**\nThis bot shows local time in specific timezones and also handles points.\nWritten by BenTechy66 on Discord.\n\n**Credits**\nBen - *wrote the bot*\nMcTrees - *hosting the bot*\nOpen Source Libraries:Discord.py, asyncio, pytz.")
+    await bot.add_reaction(msgc, "tick:326377249223999498")
+
+    
+
+>>>>>>> 53a29e10c423a0070e991310a155646d7ce4dfba
 
    
 bot.run(credentials.BotSecret) #run bot
