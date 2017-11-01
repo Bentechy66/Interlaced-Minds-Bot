@@ -9,7 +9,6 @@ import online #The CheckOnlineUsers function
 import botobject #The global bot object
 import points #The points system
 import links #sending specific links
-import status
 import sys
 import os
 

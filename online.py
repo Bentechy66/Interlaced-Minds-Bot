@@ -5,6 +5,7 @@ import botobject
 import checktz
 import points
 import random
+import status
 
 bot = botobject.bot
 global updateTime
@@ -67,11 +68,11 @@ async def CheckOnlineUsers():
             server = bot.get_server("297674982773882892")
             member = server.get_member_named(str(user))
             try:
-                embed.add_field(name=str(user), value=time + "\n" + str(member.top_role) + "\nPoints: " + str(points.GetPoints(user)[0])) #add them to the embed
-                global updateTime
-                updateTime = await checktz.GetTime("GMT")
+                embed.add_field(name=str(user), value=time + "\n" + str(member.top_role) + "\nPoints: " + str(points.GetPoints(user)[0]) + "\n[" + str(status.GetStatus(user)) + "]") #add them to the embed
+                #global updateTime
+                #updateTime = await checktz.GetTime("GMT")
             except:
-                embed.add_field(name=str(user), value="error")
+                embed.add_field(name=str(user), value="[error]")
         
         
         
