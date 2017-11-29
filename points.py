@@ -23,10 +23,12 @@ async def AddR(ctx):
         bad = counts.split(":")[0]
         good = counts.split(":")[1]
         await bot.say("Successes: " + str(good) + "\nFailed (Duplicate or error): " + str(bad))
+        return("Finished with no errors!")
     else:
         await bot.add_reaction(ctx.message, "nope:326377249274068992")
         await asyncio.sleep(3)
         await bot.delete_message(ctx.message)
+        return("Finished with no errors!")
 
 
 
