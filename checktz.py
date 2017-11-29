@@ -51,6 +51,8 @@ async def GetTime(username):
         return getTime.GetTime("US/Michigan")  
     elif username in AMS:
         return getTime.GetTime("Europe/Amsterdam")
+    elif username == "test":
+        return("Finished with no errors!")
         
     else:
         return "??:??"
