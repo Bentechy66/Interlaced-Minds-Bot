@@ -1,4 +1,6 @@
 # Interlaced-Minds-Bot
+[![Build Status](https://travis-ci.org/Bentechy66/Interlaced-Minds-Bot.png)(https://travis-ci.org/Bentechy66/Interlaced-Minds-Bot)
+
 A bot that says who's online...
 
 Timezones
