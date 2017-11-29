@@ -3,4 +3,4 @@ import asyncio
 
   
 def test_points():
-  assert await points.AddR() == "Finished with no errors!"
+  assert points.AddR() == "Finished with no errors!"
