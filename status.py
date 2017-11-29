@@ -22,6 +22,8 @@ def GetStatus(user):
     print(user)
     if user in holiday:
         return("On Holiday")
-    else:
+    elif:
         return("At Home")
+    elif user == "test":
+        return("Test passed")
 		
