@@ -11,5 +11,5 @@ maybe add a >credits command
 organise points commands
 
 # Credits
-Ben
-
+- Ben
+- Calvin very slightly (@ed588)
