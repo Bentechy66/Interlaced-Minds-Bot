@@ -15,4 +15,3 @@ organise points commands
 # Credits
 - Ben
 - Calvin very slightly (@ed588)
-- This is here to trigger me my merch
