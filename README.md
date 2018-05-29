@@ -1,6 +1,6 @@
 # Interlaced-Minds-Bot
 ![Build Status](https://travis-ci.org/Bentechy66/Interlaced-Minds-Bot.png) Tests are a work in progress
-Tests hosted on Codeship
+Tests hosted on [Codeship](https://codeship.com)
 
 A bot that says who's online...
 
